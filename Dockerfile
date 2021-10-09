@@ -11,7 +11,7 @@ RUN npm run build
 FROM base AS release
 COPY --from=build-backend /usr/app/dist ./
 COPY ./package.json ./
-COPY ./package.lock.json ./
+COPY ./package-lock.json ./
 RUN npm ci --only=production
 
 ENTRYPOINT [ "node", "index" ]
